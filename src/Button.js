@@ -10,9 +10,10 @@ const Button = ({
     warning,
     danger,
     outline,
-    rounded
+    rounded,
+    ...rest
 }) => {
-    const classes = className('px-6 py-1.5 border m-2', {
+    const classes = className(rest.className,'flex items-center px-6 py-1.5 border m-2', {
         'border-blue-600 bg-blue-500 text-white':primary,
         'border-gray-600 bg-gray-500 text-white':secondary,
         'border-green-600 bg-green-500 text-white':success,
@@ -28,7 +29,7 @@ const Button = ({
     })
 
     return (
-        <button className={classes}>{children}</button>
+        <button {...rest} className={classes}>{children}</button>
     )
 }
 
