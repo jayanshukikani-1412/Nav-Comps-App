@@ -14,6 +14,10 @@ const Sidebar = () => {
             label: 'Button',
             path: '/buttons'
         },
+        {
+            label: 'Modal',
+            path: '/modal'
+        },
     ];
 
     const renderedLinks = links.map((link) => {
