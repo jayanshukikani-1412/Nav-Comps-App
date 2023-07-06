@@ -1,8 +1,6 @@
 import Button from '../Component/Button'
 import Panel from '../Component/Panel';
-// import { useState } from 'react'
 import { useReducer } from 'react';
-// import useCounter from '../Hook/useCounter';
 
 const INCREMENT_COUNT = 'increment count';
 const DECREMENT_COUNT = 'decrement count';
@@ -10,7 +8,7 @@ const INPUT_CHANGE_VALUE_TO_ADD = 'input change value to add';
 const VALUE_ADD_INTO_COUNT = 'value add into count';
 
 const reducer = (state, action) => {
-    console.log(action)
+    console.log("action",action)
     switch (action.type) {
         case INCREMENT_COUNT:
             return {
@@ -35,31 +33,24 @@ const reducer = (state, action) => {
             }
         default:
             return state;
-            // throw new Error('UNEXPECTED ACTION TYPE : ' + action.type)
     }
 }
 
 const CounterPage = ({ initialCount }) => {
-    // const {count, increment} = useCounter(initialCount);
-    // const [count, setCount] = useState(initialCount);
-    // const [valueToAdd, setValueToAdd] = useState(0);
-
     const [state, dispatch] = useReducer(reducer, {
         count: initialCount,
-        valueToAdd: 0
+        valueToAdd: 0,
     })
 
-    console.log(state)
+    console.log("state",state)
 
     const increment = () => {
-        // setCount(count + 1);
         dispatch({
             type: INCREMENT_COUNT
         })
     }
 
     const decrement = () => {
-        // setCount(count - 1);
         dispatch({
             type: DECREMENT_COUNT
         })
@@ -67,7 +58,6 @@ const CounterPage = ({ initialCount }) => {
 
     const handleChange = (event) => {
         const value = parseInt(event.target.value) || 0;
-        // setValueToAdd(value)
         dispatch({
             type: INPUT_CHANGE_VALUE_TO_ADD,
             payload: value
@@ -76,8 +66,6 @@ const CounterPage = ({ initialCount }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // setCount(count + valueToAdd)
-        // setValueToAdd(0)
         dispatch({
             type: VALUE_ADD_INTO_COUNT
         })
